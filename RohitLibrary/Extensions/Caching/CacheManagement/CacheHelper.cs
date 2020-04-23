@@ -45,15 +45,15 @@ namespace RohitLibrary.Extensions.Caching.CacheManagement
         /// <param name="cacheExpiryTimeInMin"></param>
         /// <param name="cache"></param>
         /// <param name="uniqueKeyGenerator"></param>
-        public CacheHelper(int cacheExpiryTimeInMin, IMemoryCache cache, string uniqueKeyGeneartor = null)
+        public CacheHelper(int cacheExpiryTimeInMin, IMemoryCache cache, string uniqueKeyGenerator = null)
         {
-            if (string.IsNullOrEmpty(uniqueKeyGeneartor))
+            if (string.IsNullOrEmpty(uniqueKeyGenerator))
             {
                 _uniqueKeyGenerator = string.Empty;
             }
             else
             {
-                _uniqueKeyGenerator = uniqueKeyGeneartor;
+                _uniqueKeyGenerator = uniqueKeyGenerator;
             }
             _cache = cache ?? throw new ArgumentNullException(nameof(cache));
             _cacheExpityTime = cacheExpiryTimeInMin;

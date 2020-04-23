@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RohitLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper">
+            <summary>
+            Dependancy on 5.0.0-preview.2.20160.3\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll
+            nuget package, make sure IMemoryCache value should same as current used version.
+            </summary>
+        </member>
+        <member name="F:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper._uniqueKeyGenerator">
+            <summary>
+            unique key generator use to generate unique
+            </summary>
+        </member>
+        <member name="F:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper._cacheExpityTime">
+            <summary>
+            Cache expity time in minutes
+            </summary>
+        </member>
+        <member name="F:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper._cache">
+            <summary>
+            IMemoryCache value
+            </summary>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.#ctor(System.Int32,Microsoft.Extensions.Caching.Memory.IMemoryCache,System.String)">
+            <summary>
+            CacheHelper Constructor 
+            IMemoryCache should not null.
+            </summary>
+            <param name="cacheExpiryTimeInMin"></param>
+            <param name="cache"></param>
+            <param name="uniqueKeyGenerator"></param>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.GetCacheKey(System.String)">
+            <summary>
+            To get cache key with the combination of uniqueKeyGeneartor and passed key value
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.GetCacheExpiryTime(System.String)">
+            <summary>
+            To get cache value expiry time by key
+            if cache value already expired, method will return null value
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.TryGetCache``1(System.String,``0@)">
+            <summary>
+            Try to get value by key
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <param name="key"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.SetCache``1(System.String,``0)">
+            <summary>
+            Set cache by key : 
+            returns boolean value
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.SetCacheAsync``1(System.String,System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Set cache value by key
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <param name="key"></param>
+            <param name="createAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.UpdateCache``1(System.String,``0)">
+            <summary>
+            Updates cache by key if present in memory
+            else will not update. cache expiry time will be same after update
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.UpdateCacheAsync``1(System.String,System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Updates cache by key if present in memory.
+            if cache already expired then passed method will not execute
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <param name="key"></param>
+            <param name="createAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.RefreshCache``1(System.String,``0)">
+            <summary>
+            Updates existing cache with new time and new value
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.RefreshCacheAsync``1(System.String,System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Set value if cache already exist in memory with old value
+            It's set new value and extends expiry time.
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <param name="key"></param>
+            <param name="createAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.ExtendCacheLife``1(System.String,System.Nullable{System.DateTimeOffset})">
+            <summary>
+            extends existing cache life if present in memory.
+            uses default expiry time if not passed to the method
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <param name="key"></param>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.GetOrCreateAsync``1(System.String,System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Gets cache if present in memory else creates new one
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <param name="key"></param>
+            <param name="createAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RohitLibrary.Extensions.Caching.CacheManagement.CacheHelper.RemoveCache(System.String)">
+            <summary>
+            Removes cache by key
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:RohitLibrary.Extensions.Caching.CacheManagement.CacheModel`1.Data">
+            <summary>
+            Value to add as a cache
+            </summary>
+        </member>
+        <member name="P:RohitLibrary.Extensions.Caching.CacheManagement.CacheModel`1.AbsoluteExpiration">
+            <summary>
+            Expiry time of cache
+            </summary>
+        </member>
+    </members>
+</doc>
